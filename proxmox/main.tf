@@ -36,8 +36,10 @@ resource "proxmox_vm_qemu" "lab" {
   cores = 1
   sockets = 1
   memory = 4096
+  vmid = 200
   bootdisk = "scsi0"
-  scsihw = "virtio-scsi-pci"
+  scsihw = "virtio-scsi-single"
+  ipconfig0 = "ip=192.168.4.200/22,gw=192.168.4.1"
 
   disk {
     slot = "scsi0"
@@ -49,7 +51,7 @@ resource "proxmox_vm_qemu" "lab" {
   network {
     model = "virtio"
     bridge = var.nic_name
-    macaddr = "CA:9B:F1:85:90:C0"
+    macaddr = "CA:9B:F1:85:90:C0" # MAC-associated IP address
     # tag = var.vlan_num # This tag can be left off if you are not taking advantage of VLANs
   }
 
