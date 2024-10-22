@@ -40,3 +40,6 @@ terraform.rc
 
 # Ignore lock files
 proxmox/.terraform.lock.hcl
+
+# Ignore plans
+*.plan
