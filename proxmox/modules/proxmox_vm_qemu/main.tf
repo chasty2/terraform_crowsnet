@@ -1,6 +1,14 @@
-# Creates a proxmox_vm_qemu entity
-resource "proxmox_vm_qemu" "proxy" {
-  name = "proxy"
+terraform {
+  required_providers {
+    proxmox = {
+      source = "telmate/proxmox"
+      version = "3.0.1-rc4"
+    }
+  }
+}
+
+resource "proxmox_vm_qemu" "virtual_machine" {
+  name = var.name
   count = 1 # Establishes how many instances will be created 
   target_node = var.proxmox_host
 
@@ -13,25 +21,25 @@ resource "proxmox_vm_qemu" "proxy" {
   # VM Settings. `agent = 1` enables qemu-guest-agent
   os_type = "cloud_init"
   agent = 1
-  cores = 2
+  cores = var.cores
   sockets = 1
-  memory = 8192
-  vmid = 101
-  bootdisk = "scsi0"
+  memory = var.memory
+  vmid = var.vmid
+  # bootdisk = "scsi0"
   scsihw = "virtio-scsi-single"
-  ipconfig0 = "ip=192.168.4.101/22,gw=192.168.4.1"
+  ipconfig0 = var.ip_config
 
   disk {
     slot = "scsi0"
     type = "disk"
-    storage = "ssd_mirror" # Name of storage local to the host you are spinning the VM up on
-    size = "32G"
+    storage = var.storage_pool # Name of storage local to the host you are spinning the VM up on
+    size = var.template_disk_size
   }
 
   network {
     model = "virtio"
     bridge = var.nic_name
-    macaddr = "BC:24:11:88:D8:67" # MAC-associated IP address
+    macaddr = var.macaddr # MAC-associated IP address
     # tag = var.vlan_num # This tag can be left off if you are not taking advantage of VLANs
   }
 }
