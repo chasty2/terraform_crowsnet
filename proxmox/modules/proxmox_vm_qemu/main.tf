@@ -25,7 +25,7 @@ resource "proxmox_vm_qemu" "virtual_machine" {
   sockets = 1
   memory = var.memory
   vmid = var.vmid
-  bootdisk = "scsi0"
+  # bootdisk = "scsi0"
   scsihw = "virtio-scsi-single"
   ipconfig0 = var.ip_config
 
