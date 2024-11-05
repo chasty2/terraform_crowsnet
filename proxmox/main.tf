@@ -17,3 +17,42 @@ provider "proxmox" {
   # Default to `true` unless you have TLS working within your pve setup 
   pm_tls_insecure = true
 }
+
+module "lab" {
+  source = "./modules/proxmox_vm_qemu"
+  name = "lab"
+  vmid = 200
+  ip_config = "ip=192.168.4.200/22,gw=192.168.4.1"
+  macaddr = "CA:9B:F1:85:90:C0"
+  cores = 2
+}
+
+module "gate" {
+  source = "./modules/proxmox_vm_qemu"
+  name = "gate"
+  vmid = 100
+  ip_config = "ip=192.168.4.100/22,gw=192.168.4.1"
+  macaddr = "82:08:61:78:5A:6C"
+  cores = 2
+  memory = 4096
+}
+
+module "proxy" {
+  source = "./modules/proxmox_vm_qemu"
+  name = "proxy"
+  vmid = 101
+  ip_config = "ip=192.168.4.101/22,gw=192.168.4.1"
+  macaddr = "BC:24:11:88:D8:67"
+  cores = 2
+  memory = 8192
+}
+
+module "bailey" {
+  source = "./modules/proxmox_vm_qemu"
+  name = "bailey"
+  vmid = 125
+  ip_config = "ip=192.168.4.125/22,gw=192.168.4.1"
+  macaddr = "02:26:85:4A:AC:52"
+  cores = 6
+  memory = 24576
+}
