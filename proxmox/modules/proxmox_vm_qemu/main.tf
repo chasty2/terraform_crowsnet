@@ -1,3 +1,12 @@
+terraform {
+  required_providers {
+    proxmox = {
+      source = "telmate/proxmox"
+      version = "3.0.1-rc4"
+    }
+  }
+}
+
 resource "proxmox_vm_qemu" "virtual_machine" {
   name = var.name
   count = 1 # Establishes how many instances will be created 
