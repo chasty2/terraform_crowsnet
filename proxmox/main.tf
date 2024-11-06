@@ -56,3 +56,13 @@ module "bailey" {
   cores = 6
   memory = 24576
 }
+
+module "library" {
+  source = "./modules/proxmox_vm_qemu"
+  name = "library"
+  vmid = 126
+  ip_config = "ip=192.168.4.126/22,gw=192.168.4.1"
+  macaddr = "BC:24:11:91:7B:19"
+  cores = 2
+  memory = 8192
+}
