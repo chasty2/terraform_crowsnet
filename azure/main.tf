@@ -17,6 +17,10 @@ provider "azurerm" {
 resource "azurerm_resource_group" "crowsnet" {
   name     = "CrowsNet"
   location = "eastus"
+
+  tags = {
+    Environment = "HomeLab"
+  }
 }
 
 resource "azurerm_virtual_network" "vnet" {
