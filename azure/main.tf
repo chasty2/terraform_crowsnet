@@ -23,5 +23,5 @@ resource "azurerm_virtual_network" "vnet" {
     name                = "crowsnet_virtual_network"
     address_space       = ["192.168.4.0/22"]
     location            = "eastus"
-    resource_group_name = azurerm_resource_group.crowsnet
+    resource_group_name = azurerm_resource_group.crowsnet.name
 }
