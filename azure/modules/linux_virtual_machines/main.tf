@@ -14,6 +14,7 @@ resource "azurerm_network_interface" "crowsnet" {
   location            = var.location
   resource_group_name = var.resource_group_name
 
+  # TODO: Assign fixed private IP's
   ip_configuration {
     name                          = "${var.hostname_list[count.index]}_nic_config"
     subnet_id                     = var.subnet_id
