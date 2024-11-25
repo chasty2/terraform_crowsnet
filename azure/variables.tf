@@ -1,7 +1,6 @@
-variable "username" {
-  type        = string
-  description = "local user that will be created on each VM"
-  default     = "ansible"
+variable "internal_vm_names" {
+  type    = list(string)
+  default = ["bailey", "lab", "library"]
 }
 
 variable "public_ssh_key" {
