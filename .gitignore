@@ -39,4 +39,7 @@ override.tf.json
 terraform.rc
 
 # Ignore lock files
-proxmox/.terraform.lock.hcl
+**/.terraform.lock.hcl
+
+# Ignore Azure environment variable setting script
+azure/set_env.sh
