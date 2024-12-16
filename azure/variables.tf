@@ -6,7 +6,7 @@ variable "internal_vm_names" {
 
 variable "public_vm_names" {
   type        = list(string)
-  description = "Array of names of internal virtual machines"
+  description = "Array of names of public virtual machines"
   default     = ["gate"]
 }
 
