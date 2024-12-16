@@ -1,7 +1,13 @@
 variable "internal_vm_names" {
   type        = list(string)
   description = "Array of names of internal virtual machines"
-  default     = ["bailey", "lab", "library"]
+  default     = ["web", "nfs"]
+}
+
+variable "public_vm_names" {
+  type        = list(string)
+  description = "Array of names of internal virtual machines"
+  default     = ["gate"]
 }
 
 variable "public_ssh_key" {
