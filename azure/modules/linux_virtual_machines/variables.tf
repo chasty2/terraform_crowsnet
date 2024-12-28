@@ -13,6 +13,11 @@ variable "hostname_list" {
   description = "a list of names, one for each VM being created"
 }
 
+variable "private_ip_list" {
+  type        = list(string)
+  description = "A list of private IP addresses, assigned to the host in hostname_list with the same index"
+}
+
 variable "location" {
   type        = string
   description = "datacenter to house the virtual machine"
@@ -24,14 +29,14 @@ variable "resource_group_name" {
 }
 
 variable "network_security_group_id" {
-  type = string
+  type        = string
   description = "Network security group id to attach to each NIC"
 }
 
 variable "size" {
   type        = string
   description = "amount of resources allocated to virtual machine"
-  default     = "Standard_DC1ds_v3"
+  default     = "Standard_D2ads_v6"
 }
 
 variable "username" {

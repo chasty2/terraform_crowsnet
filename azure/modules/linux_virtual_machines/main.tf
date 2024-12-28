@@ -18,7 +18,8 @@ resource "azurerm_network_interface" "crowsnet" {
   ip_configuration {
     name                          = "${var.hostname_list[count.index]}_nic_config"
     subnet_id                     = var.subnet_id
-    private_ip_address_allocation = "Dynamic"
+    private_ip_address_allocation = "Static"
+    private_ip_address            = var.private_ip_list[count.index]
     public_ip_address_id          = azurerm_public_ip.crowsnet[count.index].id
   }
 }
