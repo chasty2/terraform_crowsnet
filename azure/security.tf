@@ -111,7 +111,7 @@ resource "azurerm_network_security_group" "public" {
     source_port_range          = "*"
     destination_port_range     = "443"
     source_address_prefix      = "*"
-    destination_address_prefix = "192.168.4.101"
+    destination_address_prefix = "192.168.4.100"
   }
 
   # Allow HTTP from any machine to proxy
@@ -124,7 +124,7 @@ resource "azurerm_network_security_group" "public" {
     source_port_range          = "*"
     destination_port_range     = "80"
     source_address_prefix      = "*"
-    destination_address_prefix = "192.168.4.101"
+    destination_address_prefix = "192.168.4.100"
   }
 
   # Allow NGINX Proxy Manager admin UI from Builder
@@ -137,6 +137,6 @@ resource "azurerm_network_security_group" "public" {
     source_port_range          = "*"
     destination_port_range     = "81"
     source_address_prefix      = var.builder_public_ip
-    destination_address_prefix = "192.168.4.101"
+    destination_address_prefix = "192.168.4.100"
   }
 }
