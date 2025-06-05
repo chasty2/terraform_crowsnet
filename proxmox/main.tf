@@ -18,14 +18,14 @@ provider "proxmox" {
   pm_tls_insecure = true
 }
 
-module "lab" {
-  source = "./modules/proxmox_vm_qemu"
-  name = "lab"
-  vmid = 200
-  ip_config = "ip=192.168.4.200/22,gw=192.168.4.1"
-  macaddr = "CA:9B:F1:85:90:C0"
-  cores = 2
-}
+# module "lab" {
+#   source = "./modules/proxmox_vm_qemu"
+#   name = "lab"
+#   vmid = 200
+#   ip_config = "ip=192.168.4.200/22,gw=192.168.4.1"
+#   macaddr = "CA:9B:F1:85:90:C0"
+#   cores = 2
+# }
 
 module "gate" {
   source = "./modules/proxmox_vm_qemu"
@@ -54,15 +54,15 @@ module "bailey" {
   ip_config = "ip=192.168.4.125/22,gw=192.168.4.1"
   macaddr = "02:26:85:4A:AC:52"
   cores = 6
-  memory = 24576
+  memory = 12288
 }
 
-module "library" {
-  source = "./modules/proxmox_vm_qemu"
-  name = "library"
-  vmid = 126
-  ip_config = "ip=192.168.4.126/22,gw=192.168.4.1"
-  macaddr = "BC:24:11:91:7B:19"
-  cores = 2
-  memory = 8192
-}
+# module "library" {
+#   source = "./modules/proxmox_vm_qemu"
+#   name = "library"
+#   vmid = 126
+#   ip_config = "ip=192.168.4.126/22,gw=192.168.4.1"
+#   macaddr = "BC:24:11:91:7B:19"
+#   cores = 2
+#   memory = 8192
+# }
